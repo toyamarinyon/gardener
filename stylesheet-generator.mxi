@@ -1,4 +1,6 @@
-<macromedia-extension name="stylesheet-generator" version="0.1.0" type="Toolbar">
+<?xml version="1.0" encoding="utf-8"?>
+<macromedia-extension name="StyleSheetGenerator" version="0.1.0" type="Toolbar">
+	<description><![CDATA[Stylesheet-generator is a web-developerfs toolkit that can greatly improve your HTML & CSS workflow: write HTML code, use actions to quickly generate CSS scaffolding code!]]></description>
   <author name="toyamarinyon" />
 
   <products>
@@ -14,13 +16,14 @@
     ]]></license-agreement>
 
   <files>
-    <file name="stylesheet-generator.png" destination="$dreamweaver/configuration/Toolbars/images/Oneclick-css" /> 
+    <file source="Images/StyleSheetGenerator.png" destination="$dreamweaver/configuration/Toolbars/images/StyleSheetGenerator" /> 
+    <file source="Commands/StyleSheetGenerator.html" destination="$dreamweaver/configuration/Commands/StyleSheetGenerator" /> 
   </files>
 
   <configuration-changes>
     <toolbar-changes>
       <toolbar-item-insert insertAfter="DW_CSSCodePopup" toolbar="DW_CodeView_Toolbar">
-        <button id="DW_StyleSheetGenerator" image="Toolbars/images/Oneclick-css/stylesheet-generator.png" name="StyleSheetGenerator" enabled="true" command="dw.setFocus('textView');dw.getDocumentDOM().source.indentTextView()" MMString:tooltip="DW_IndentCode/button/tooltip"/>
+        <button id="DW_StyleSheetGenerator" image="Toolbars/images/Oneclick-css/stylesheet-generator.png" name="StyleSheetGenerator" enabled="true" command="dw.runCommand('StyleSheetGenerator.html')" />
       </toolbar-item-insert>
     </toolbar-changes>
   </configuration-changes>
