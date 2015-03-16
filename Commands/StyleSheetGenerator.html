@@ -1,0 +1,50 @@
+<html> 
+<head> 
+    <title>Editable Dropdown Test</title> 
+    <script language="javascript"> 
+    function getAlert() 
+    {             
+         
+        var i=document.myForm.mySelect.selectedIndex;     
+        if (i>=0) 
+        { 
+            alert("Selected index: " + i + "\n" + "Selected text " + 
+                    document.myForm.mySelect.options[i].text); 
+        } 
+        else 
+        { 
+            alert("Nothing is selected" + "\n" + "or you entered a value"); 
+        } 
+    } 
+    function commandButtons() 
+    { 
+        return new Array("OK", "getAlert()", "Cancel", "window.close()"); 
+    } 
+    </script> 
+</head> 
+ 
+<body> 
+<div name="test"> 
+<form name="myForm"> 
+<table> 
+    <tr> 
+        <td colspan="2"> 
+        <h4>Select your favorite</h4> 
+        </td> 
+    </tr> 
+    <tr> 
+        <td>Sport:</td> 
+        <td> 
+        <select name="mySelect" style="width:150px" 
+            > 
+            <option> Baseball</option> 
+            <option> Football </option> 
+            <option> Soccer </option>     
+        </select> 
+        </td> 
+    </tr> 
+</table> 
+</form> 
+</div> 
+</body> 
+</html>
