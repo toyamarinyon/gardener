@@ -1,0 +1,27 @@
+<macromedia-extension name="stylesheet-generator" version="0.1.0" type="Toolbar">
+  <author name="toyamarinyon" />
+
+  <products>
+    <product name="Dreamweaver" version="12.0" primary="true" />
+  </products>
+
+  <ui-access><![CDATA[
+    「コードビュー」のツールバーから「htmlからcssを作成」を選択して実行する。
+    ]]></ui-access>
+
+  <license-agreement><![CDATA[
+    Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php
+    ]]></license-agreement>
+
+  <files>
+    <file name="stylesheet-generator.png" destination="$dreamweaver/configuration/Toolbars/images/Oneclick-css" /> 
+  </files>
+
+  <configuration-changes>
+    <toolbar-changes>
+      <toolbar-item-insert insertAfter="DW_CSSCodePopup" toolbar="DW_CodeView_Toolbar">
+        <button id="DW_StyleSheetGenerator" image="Toolbars/images/Oneclick-css/stylesheet-generator.png" name="StyleSheetGenerator" enabled="true" command="dw.setFocus('textView');dw.getDocumentDOM().source.indentTextView()" MMString:tooltip="DW_IndentCode/button/tooltip"/>
+      </toolbar-item-insert>
+    </toolbar-changes>
+  </configuration-changes>
+</macromedia-extension>
