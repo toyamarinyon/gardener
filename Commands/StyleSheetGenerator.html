@@ -1,6 +1,6 @@
 <html> 
 <head> 
-    <title>Editable Dropdown Test</title> 
+    <title>Gardener(Convert dom tree into selector tree)</title> 
     <script language="javascript"> 
     function getAlert() 
     {             
@@ -24,27 +24,90 @@
 </head> 
  
 <body> 
-<div name="test"> 
 <form name="myForm"> 
 <table> 
     <tr> 
-        <td colspan="2"> 
-        <h4>Select your favorite</h4> 
+        <td colspan="4"> 
+        <h3>Nest Rule</h3> 
         </td> 
     </tr> 
     <tr> 
-        <td>Sport:</td> 
-        <td> 
-        <select name="mySelect" style="width:150px" 
-            > 
-            <option> Baseball</option> 
-            <option> Football </option> 
-            <option> Soccer </option>     
-        </select> 
+        <td>
+          <label>
+            <input type="radio" name="NestRule" value="NoNest">
+            <span>No Nest</span>
+          </label>
+        </td> 
+        <td>
+          <label>
+            <input type="radio" name="NestRule" value="Children">
+            <span>Children</span>
+          </label>
+        </td> 
+        <td colspan="2">
+          <label>
+            <input type="radio" name="NestRule" value="Child">
+            <span>Child</span>
+          </label>
+        </td> 
+    </tr> 
+    <tr> 
+        <td colspan="4"> 
+        <h3>FileType</h3> 
+        </td> 
+    </tr> 
+    <tr> 
+        <td>
+          <label>
+            <input type="radio" name="FileType" value="CSS">
+            <span>CSS</span>
+          </label>
+        </td> 
+        <td>
+          <label>
+            <input type="radio" name="FileType" value="SCSS">
+            <span>SCSS</span>
+          </label>
+        </td> 
+        <td>
+          <label>
+            <input type="radio" name="FileType" value="LESS">
+            <span>LESS</span>
+          </label>
+        </td> 
+        <td>
+          <label>
+            <input type="radio" name="FileType" value="SASS">
+            <span>SASS</span>
+          </label>
+        </td> 
+    </tr> 
+    <tr> 
+        <td colspan="4"> 
+        <h3>Output</h3> 
+        </td> 
+    </tr> 
+    <tr> 
+        <td>
+          <label>
+            <input type="radio" name="Output" value="File">
+            <span>File</span>
+          </label>
+        </td> 
+        <td>
+          <label>
+            <input type="radio" name="Output" value="Clipboard">
+            <span>Clipboard</span>
+          </label>
+        </td> 
+        <td colspan="2">
+          <label>
+            <input type="radio" name="Output" value="DocumentHead">
+            <span><em>head</em> in this document</span>
+          </label>
         </td> 
     </tr> 
 </table> 
 </form> 
-</div> 
 </body> 
 </html>
