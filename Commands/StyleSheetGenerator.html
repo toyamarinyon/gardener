@@ -1,113 +1,113 @@
-<html> 
-<head> 
-    <title>Gardener(Convert dom tree into selector tree)</title> 
-    <script language="javascript"> 
-    function getAlert() 
-    {             
-         
-        var i=document.myForm.mySelect.selectedIndex;     
-        if (i>=0) 
-        { 
-            alert("Selected index: " + i + "\n" + "Selected text " + 
-                    document.myForm.mySelect.options[i].text); 
-        } 
-        else 
-        { 
-            alert("Nothing is selected" + "\n" + "or you entered a value"); 
-        } 
-    } 
-    function commandButtons() 
-    { 
-        return new Array("OK", "getAlert()", "Cancel", "window.close()"); 
-    } 
-    </script> 
-</head> 
- 
-<body> 
-<form name="myForm"> 
-<table> 
-    <tr> 
-        <td colspan="4"> 
-        <h3>Nest Rule</h3> 
-        </td> 
-    </tr> 
-    <tr> 
+<html>
+<head>
+    <title>Gardener(Convert dom tree into selector tree)</title>
+    <script language="javascript">
+    function getAlert()
+    {
+
+        var i=document.myForm.mySelect.selectedIndex;
+        if (i>=0)
+        {
+            alert("Selected index: " + i + "\n" + "Selected text " +
+                    document.myForm.mySelect.options[i].text);
+        }
+        else
+        {
+            alert("Nothing is selected" + "\n" + "or you entered a value");
+        }
+    }
+    function commandButtons()
+    {
+        return new Array("OK", "getAlert()", "Cancel", "window.close()");
+    }
+    </script>
+</head>
+
+<body>
+<form name="myForm" style="width: 500px;">
+<table>
+    <tr>
+        <td colspan="4">
+        <h3>Nest Rule</h3>
+        </td>
+    </tr>
+    <tr>
         <td>
           <label>
             <input type="radio" name="NestRule" value="NoNest">
             <span>No Nest</span>
           </label>
-        </td> 
+        </td>
         <td>
           <label>
             <input type="radio" name="NestRule" value="Children">
             <span>Children</span>
           </label>
-        </td> 
+        </td>
         <td colspan="2">
           <label>
             <input type="radio" name="NestRule" value="Child">
             <span>Child</span>
           </label>
-        </td> 
-    </tr> 
-    <tr> 
-        <td colspan="4"> 
-        <h3>FileType</h3> 
-        </td> 
-    </tr> 
-    <tr> 
+        </td>
+    </tr>
+    <tr>
+        <td colspan="4">
+        <h3>FileType</h3>
+        </td>
+    </tr>
+    <tr>
         <td>
           <label>
             <input type="radio" name="FileType" value="CSS">
             <span>CSS</span>
           </label>
-        </td> 
+        </td>
         <td>
           <label>
             <input type="radio" name="FileType" value="SCSS">
             <span>SCSS</span>
           </label>
-        </td> 
+        </td>
         <td>
           <label>
             <input type="radio" name="FileType" value="LESS">
             <span>LESS</span>
           </label>
-        </td> 
+        </td>
         <td>
           <label>
             <input type="radio" name="FileType" value="SASS">
             <span>SASS</span>
           </label>
-        </td> 
-    </tr> 
-    <tr> 
-        <td colspan="4"> 
-        <h3>Output</h3> 
-        </td> 
-    </tr> 
-    <tr> 
+        </td>
+    </tr>
+    <tr>
+        <td colspan="4">
+        <h3>Output</h3>
+        </td>
+    </tr>
+    <tr>
         <td>
           <label>
             <input type="radio" name="Output" value="File">
             <span>File</span>
           </label>
-        </td> 
+        </td>
         <td>
           <label>
             <input type="radio" name="Output" value="Clipboard">
             <span>Clipboard</span>
           </label>
-        </td> 
+        </td>
         <td colspan="2">
           <label>
             <input type="radio" name="Output" value="DocumentHead">
             <span><em>head</em> in this document</span>
           </label>
-        </td> 
-    </tr> 
-</table> 
-</form> 
-</body> 
+        </td>
+    </tr>
+</table>
+</form>
+</body>
 </html>
