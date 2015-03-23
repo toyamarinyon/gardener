@@ -1,0 +1,30 @@
+{
+  "name": "dw-stylesheet-generator",
+  "version": "0.1.0",
+  "description": "domtree to selectertree converter",
+  "main": "index.js",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "coffee-script": "^1.9.0",
+    "gulp": "^3.8.11",
+    "gulp-webserver": "^0.9.0",
+    "gulp-coffee": "^2.3.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com/toyamarinyon/dw-stylesheet-generator"
+  },
+  "keywords": [
+    "dreamweaver"
+  ],
+  "author": "toyamarinyon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/toyamarinyon/dw-stylesheet-generator/issues"
+  },
+  "homepage": "https://github.com/toyamarinyon/dw-stylesheet-generator"
+}
