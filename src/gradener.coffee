@@ -13,13 +13,27 @@ GardenerControlCharacter =
   twoSpace: '  '
   lineBreak: '\n'
 
+
+testArray = [
+  '#test':[
+    '.ul1':[
+      '.span1':[
+      ],
+      '.span2':[
+      ]
+    ],
+    '.ul2':[
+    ],
+  ]
+]
+
 class Gardener
 
   constructor: (args) ->
     @nestRule = GardenerNestRule.noNest
     if args? and args.nestRule?
       @nestRule = args.nestRule
-    @fileType = GardenerFileType.css
+    @fileType = GardenerFileType.scss
     if args? and args.nestRule?
       @fileType = args.fileType
     @selectorStack = []
@@ -34,16 +48,38 @@ class Gardener
     execConvert.call @, uniqueDomTree
     return @converted
 
-  generateUniqueDomTree = (dom) ->
+  generateDom = (dom) ->
     node =
       tagname: dom.tagName || ''
       id: dom.id || ''
       classes: dom.className || ''
       children: []
 
+  generateUniqueDomTree = (dom) ->
+    node = generateDom.call @, dom
+
+    nodeToStr = (node) ->
+      string = ''
+      string += node.tagname unless node.tagname is ''
+      string += '#'+node.id unless node.id is ''
+      string += '.'+node.classes unless node.classes is ''
+      return string
+
     if dom.children.length > 0
+      cache = []
+      cacheChildren =
+        children: []
       for child in dom.children
-        node.children.push generateUniqueDomTree.call @, child
+        _dom = generateDom.call @, child
+        _domToStr = nodeToStr _dom
+        if cache.indexOf(_domToStr) < 0
+          cache.push _domToStr
+          cacheChildren.children.push child
+        else
+          cacheChildren.children.concat child.children if child.children.length < 0
+      # for cacheChild in cache
+      #     node.children.push generateUniqueDomTree.call @, cacheChild
+
 
     return node
 
