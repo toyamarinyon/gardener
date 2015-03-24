@@ -15,5 +15,8 @@ gulp.task 'build:coffee', ->
 gulp.task 'webserver', ->
   gulp.src './'
     .pipe webserver
-      livereload: true
+      livereload:
+        enable: true
+        filter: (filename) ->
+          filename.match /Commands/
       host: '0.0.0.0'
