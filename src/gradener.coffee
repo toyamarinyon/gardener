@@ -67,18 +67,20 @@ class Gardener
 
     if dom.children.length > 0
       cache = []
-      cacheChildren =
-        children: []
+      cacheChildren = []
       for child in dom.children
         _dom = generateDom.call @, child
         _domToStr = nodeToStr _dom
-        if cache.indexOf(_domToStr) < 0
+        cacheHitIndex = cache.indexOf _domToStr
+        if cacheHitIndex < 0
           cache.push _domToStr
-          cacheChildren.children.push child
+          cacheChildren.push child
         else
-          cacheChildren.children.concat child.children if child.children.length < 0
-      # for cacheChild in cache
-      #     node.children.push generateUniqueDomTree.call @, cacheChild
+          console.dir cacheChildren[cacheHitIndex].children
+          # cacheChildren[cacheHitIndex].children.push child.children if child.children.length > 0
+          # console.dir cacheChildren[cacheHitIndex].children.length
+      for cacheChild in cacheChildren
+        node.children.push generateUniqueDomTree.call @, cacheChild
 
 
     return node
