@@ -39,30 +39,39 @@ class Gardener
     @selectorStack = []
     @converted
     @nestLevel = 1
+    @dummyFlg = true
 
   convert: (domTree) ->
     @selectorStack = []
     @converted = ''
     @nestLevel = 1
-    uniqueDomTree = generateUniqueDomTree.call @, domTree
+    domObjects = domToObjects.call @, domTree
+    uniqueDomTree = generateUniqueDomTree.call @, domObjects
     execConvert.call @, uniqueDomTree
     return @converted
 
   generateDom = (dom) ->
     node =
-      tagname: dom.tagName || ''
+      tagName: dom.tagName || ''
       id: dom.id || ''
-      classes: dom.className || ''
+      className: dom.className || ''
       children: []
+
+  domToObjects = (dom) ->
+    object = generateDom.call @, dom
+    if dom.children.length > 0
+      for child in dom.children
+        object.children.push domToObjects.call @, child
+    return object
 
   generateUniqueDomTree = (dom) ->
     node = generateDom.call @, dom
 
     nodeToStr = (node) ->
       string = ''
-      string += node.tagname unless node.tagname is ''
+      string += node.tagName unless node.tagName is ''
       string += '#'+node.id unless node.id is ''
-      string += '.'+node.classes unless node.classes is ''
+      string += '.'+node.className unless node.className is ''
       return string
 
     if dom.children.length > 0
@@ -76,20 +85,16 @@ class Gardener
           cache.push _domToStr
           cacheChildren.push child
         else
-          console.dir cacheChildren[cacheHitIndex].children
-          # cacheChildren[cacheHitIndex].children.push child.children if child.children.length > 0
-          # console.dir cacheChildren[cacheHitIndex].children.length
+          cacheChildren[cacheHitIndex].children = cacheChildren[cacheHitIndex].children.concat child.children if child.children.length > 0
       for cacheChild in cacheChildren
         node.children.push generateUniqueDomTree.call @, cacheChild
-
-
     return node
 
 
   execConvert = (dom) ->
     selectorString = ''
     selectorString += "#"+dom.id if dom.id
-    selectorString += "."+dom.classes if dom.classes
+    selectorString += "."+dom.className if dom.className
 
     postSelector.call @, selectorString
 
