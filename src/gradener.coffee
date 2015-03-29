@@ -13,20 +13,6 @@ GardenerControlCharacter =
   twoSpace: '  '
   lineBreak: '\n'
 
-
-testArray = [
-  '#test':[
-    '.ul1':[
-      '.span1':[
-      ],
-      '.span2':[
-      ]
-    ],
-    '.ul2':[
-    ],
-  ]
-]
-
 class Gardener
 
   constructor: (args) ->
