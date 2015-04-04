@@ -45,8 +45,10 @@ class Gardener
 
   domToObjects = (dom) ->
     object = generateDom.call @, dom
-    if dom.children.length > 0
-      for child in dom.children
+    if dom.hasChildNodes()
+      for child in dom.childNodes
+        if child.nodeName is '#text'
+          continue
         object.children.push domToObjects.call @, child
     return object
 
@@ -78,20 +80,23 @@ class Gardener
 
 
   execConvert = (dom) ->
-    selectorString = ''
-    selectorString += "#"+dom.id if dom.id
-    selectorString += "."+dom.className if dom.className
+    domToStr = (dom) ->
+      string = ''
+      string += "#"+dom.id if dom.id
+      string += "."+dom.className if dom.className
+      return string
 
-    postSelector.call @, selectorString
+    selectorString = domToStr dom
+    postSelector.call @, selectorString if selectorString unless ''
 
     if dom.children.length > 0
-      preChildren.call @, selectorString
+      preChildren.call @, selectorString if selectorString unless ''
       for child in dom.children
-        preChild.call @
+        preChild.call @ if domToStr child unless ''
         execConvert.call @, child
-      postChildren.call @
+      postChildren.call @ if selectorString unless ''
     else
-      postChild.call @
+      postChild.call @ if selectorString unless ''
       @prevConvertString = ''
 
   postSelector = (selectorString) ->
