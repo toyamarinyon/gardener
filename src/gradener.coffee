@@ -20,7 +20,7 @@ class Gardener
     if args? and args.nestRule?
       @nestRule = args.nestRule
     @fileType = GardenerFileType.scss
-    if args? and args.nestRule?
+    if args? and args.fileType?
       @fileType = args.fileType
     @selectorStack = []
     @converted

@@ -1,20 +1,44 @@
 <html>
 <head>
     <title>Gardener(Convert dom tree into selector tree)</title>
+    <script src="gardener.js"></script>
     <script language="javascript">
+    function selectedIndex(input) {
+      var selectedIndex = 0;
+      for ( var i = 0; i < input.length; i++ ) {
+        if ( input[i].checked ) {
+          selectedIndex = input[i].value;
+        }
+      }
+      return selectedIndex;
+    }
     function getAlert()
     {
 
-        var i=document.myForm.mySelect.selectedIndex;
-        if (i>=0)
-        {
-            alert("Selected index: " + i + "\n" + "Selected text " +
-                    document.myForm.mySelect.options[i].text);
-        }
-        else
-        {
-            alert("Nothing is selected" + "\n" + "or you entered a value");
-        }
+      var doc = dw.getDocumentDOM();
+
+      var gardenerForm = document.GardenerForm;
+      var fileType = selectedIndex(gardenerForm.FileType);
+      var output = selectedIndex(gardenerForm.Output);
+      dreamweaver.browseForFolderURL("select")
+      var gardenerOption = {
+        fileType: fileType,
+        output: output
+      };
+      var selObj = doc.getSelectedNode();
+      var gardener = new Gardener(gardenerOption);
+      var result = gardener.convert(selObj);
+
+        // var i=document.myForm.mySelect.selectedIndex;
+        // if (i>=0)
+        // {
+        //     alert("Selected index: " + i + "\n" + "Selected text " +
+        //             document.myForm.mySelect.options[i].text);
+        // }
+        // else
+        // {
+        //     alert("Nothing is selected" + "\n" + "or you entered a value");
+        // }
     }
     function commandButtons()
     {
@@ -24,33 +48,8 @@
 </head>
 
 <body>
-<form name="myForm" style="width: 500px;">
+<form name="GardenerForm" style="width: 500px;">
 <table>
-    <tr>
-        <td colspan="4">
-        <h3>Nest Rule</h3>
-        </td>
-    </tr>
-    <tr>
-        <td>
-          <label>
-            <input type="radio" name="NestRule" value="NoNest">
-            <span>No Nest</span>
-          </label>
-        </td>
-        <td>
-          <label>
-            <input type="radio" name="NestRule" value="Children">
-            <span>Children</span>
-          </label>
-        </td>
-        <td colspan="2">
-          <label>
-            <input type="radio" name="NestRule" value="Child">
-            <span>Child</span>
-          </label>
-        </td>
-    </tr>
     <tr>
         <td colspan="4">
         <h3>FileType</h3>
@@ -59,25 +58,25 @@
     <tr>
         <td>
           <label>
-            <input type="radio" name="FileType" value="CSS">
+            <input type="radio" name="FileType" value="0">
             <span>CSS</span>
           </label>
         </td>
         <td>
           <label>
-            <input type="radio" name="FileType" value="SCSS">
+            <input type="radio" name="FileType" value="1" checked="checked">
             <span>SCSS</span>
           </label>
         </td>
         <td>
           <label>
-            <input type="radio" name="FileType" value="LESS">
+            <input type="radio" name="FileType" value="2">
             <span>LESS</span>
           </label>
         </td>
         <td>
           <label>
-            <input type="radio" name="FileType" value="SASS">
+            <input type="radio" name="FileType" value="3">
             <span>SASS</span>
           </label>
         </td>
@@ -109,5 +108,12 @@
     </tr>
 </table>
 </form>
+<div id="testdom" style="display: none;">
+  <div id="top">
+    <ul>
+      <li class="lists"></li>
+    </ul>
+  </div>
+</div>
 </body>
 </html>
