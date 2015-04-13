@@ -1,0 +1,97 @@
+
+<html>
+<head>
+    <title>Gardener(Convert dom tree into selector tree)</title>
+    <script src="Gardener.js"></script>
+    <script language="javascript">
+    function initializeUI() {
+      updateUI();
+    }
+    function updateUI () {
+      var convertString = execGardener();
+      document.GardenerForm.Preview.value = convertString;
+    }
+    function selectedIndex(input) {
+      var selectedIndex = 0;
+      for ( var i = 0; i < input.length; i++ ) {
+        if ( input[i].checked ) {
+          selectedIndex = input[i].value;
+        }
+      }
+      return selectedIndex;
+    }
+    function execGardener() {
+      var doc = dw.getDocumentDOM();
+
+      var gardenerForm = document.GardenerForm;
+      var selectedIndex = gardenerForm.FileType.selectedIndex;
+      var fileType = gardenerForm.FileType.options[selectedIndex].value;
+      var gardenerOption = {
+        fileType: fileType
+      };
+      var selObj = doc.getSelectedNode();
+      var gardener = new Gardener(gardenerOption);
+      var result = gardener.convert(selObj);
+      return result;
+    }
+    function exportToFile() {
+      var exportString = execGardener();
+      var saveFileUrl = dreamweaver.browseForFileURL("save", "Please select for an export file", false, true);
+      DWfile.write(saveFileUrl, exportString, "append");
+      window.close();
+
+        // var i=document.myForm.mySelect.selectedIndex;
+        // if (i>=0)
+        // {
+        //     alert("Selected index: " + i + "\n" + "Selected text " +
+        //             document.myForm.mySelect.options[i].text);
+        // }
+        // else
+        // {
+        //     alert("Nothing is selected" + "\n" + "or you entered a value");
+        // }
+    }
+    function commandButtons()
+    {
+        return new Array("PutButtonsOnBottom", "OkButton defaultButton", "Export", "exportToFile()", "Close", "window.close()");
+    }
+    </script>
+    <style>
+      .gardener-table {
+        border: none
+      }
+      .gardener-table tr td {
+        vertical-align: top;
+        padding: 10px 0;
+      }
+      .list-nodisc {
+        list-style: none;
+        margin: 0;
+      }
+    </style>
+</head>
+
+<body onLoad="initializeUI()">
+<form name="GardenerForm" style="">
+
+<table class="gardener-table">
+  <tr>
+    <td style="width: 20px;">
+      FileType
+    </td>
+    <td style="width: 100px;">
+      <select name="FileType" onChange="updateUI()">
+        <option value="0">css</option>
+        <option value="1" selected="selected">scss/less</option>
+        <option value="3">sass</option>
+      </select>
+    </td>
+    <td rowspan="2" style="width: 200px;">
+      <textarea name="Preview" readonly style="height: 150px;"></textarea>
+    </td>
+  </tr>
+</table>
+</form>
+</body>
+</html>
+
