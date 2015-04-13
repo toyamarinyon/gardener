@@ -1,2 +1,5 @@
-stylesheet-generator.zxp
+Gardener.zxp
+Commands/Gardener.js
 node_modules
+*.swp
+
