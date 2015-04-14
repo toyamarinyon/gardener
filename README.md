@@ -3,6 +3,8 @@ Gardener
 
 Web-developer's toolkit that can greatly improve you HTML & CSS workflow.
 
+Now it supports only `Dreamweaver`. I will continue to support the future many editors.
+
 Description
 ====
 
@@ -11,7 +13,7 @@ Description
 Demo
 ====
 
-![top-page](https://github.com/toyamarinyon/gardener/blob/assets/gardenerdemo.gif?raw=true)
+![top-page](https://github.com/toyamarinyon/gardener/blob/assets/gardenerdemo.gif)
 
 
 Installation
@@ -19,17 +21,28 @@ Installation
 
 ## DreamWeaver
 
-Go to the [release page](), find the version you want, and download the zxp file.
+Download [Gardener.zxp](https://github.com/toyamarinyon/gardener/releases/download/v0.2.0/Gardener.zxp) and double-click on it: the Adobe Extension Manager should start automatically and install extension. If you don’t have Extension Manager, you can download it from [here](http://www.adobe.com/exchange/em_download/).
+
+When installed, checkout gavel icon in CodeviewToolbar.
+
+## Atom
+
+Under development...
 
 ## SublimeText
 
-Now development...
+Under development...
 
 ## Vim
 
-Now development...
+Under development...
 
 ## And more...
 
-Now development...
+Under development...
 
+
+Thanks
+====
+
+Special thanks to [@nex_32](https://twitter.com/nex_32), who is author of `OneClickCss`.
