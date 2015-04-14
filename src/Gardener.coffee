@@ -83,7 +83,7 @@ class Gardener
     domToStr = (dom) ->
       string = ''
       string += "#"+dom.id if dom.id
-      string += "."+dom.className if dom.className
+      string += "."+dom.className.replace /\ /g, "." if dom.className
       return string
 
     selectorString = domToStr dom
