@@ -21,7 +21,7 @@ Installation
 
 ## DreamWeaver
 
-Download [Gardener.zxp](https://github.com/toyamarinyon/gardener/releases/download/v0.2.1/Gardener.zxp) and double-click on it: the Adobe Extension Manager should start automatically and install extension. If you don’t have Extension Manager, you can download it from [here](http://www.adobe.com/exchange/em_download/).
+Download [Gardener.zxp](https://github.com/toyamarinyon/gardener/releases/download/v0.2.2/Gardener.zxp) and double-click on it: the Adobe Extension Manager should start automatically and install extension. If you don’t have Extension Manager, you can download it from [here](http://www.adobe.com/exchange/em_download/).
 
 When installed, checkout gavel icon in CodeviewToolbar.
 
