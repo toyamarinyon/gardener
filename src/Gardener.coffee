@@ -96,7 +96,7 @@ class Gardener
         execConvert.call @, child
       postChildren.call @ if selectorString unless ''
     else
-      postChild.call @ if selectorString unless ''
+      postChild.call @ if @fileType is GardenerFileType.css || selectorString unless ''
       @prevConvertString = ''
 
   postSelector = (selectorString) ->
